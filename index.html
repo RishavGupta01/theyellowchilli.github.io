@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Yellow Chilli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-mono bg-gray-100">
+
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold inline-flex items-center space-x-2">
+                <span class="text-red-600">The</span>
+                <span class="text-amber-300">Yellow</span>
+                <span class="text-red-600">Chilli</span>
+            </h1>
+            <nav>
+                <ul class="flex text-xl space-x-8">
+                    <li><a href="#" class="text-gray-800 hover:text-red-700">Home</a></li>
+                    <li><a href="#menu" class="text-gray-800 hover:text-red-700">Menu</a></li>
+                    <li><a href="#about" class="text-gray-800 hover:text-red-700">About</a></li>
+                    <li><a href="#contact" class="text-gray-800 hover:text-red-700">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative bg-cover bg-center h-screen font-mono" style="background-image: url('restaurant.webp');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Our Restaurant</h2>
+                <p class="text-lg md:text-2xl mb-6">Where Flavor Meets Quality</p>
+                <a href="#menu" class="bg-red-500 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full">Explore Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class=" font-mono py-12 bg-gradient-to-r from-black to-slate-900">
+        <div class="container mx-auto text-center">
+            <h3 class="text-5xl font-bold  text-amber-300 mb-8">Our Menu</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+                <!-- Dish 1 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image1.png" alt="Bruschetta" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Bruschetta</h4>
+                        <p class="text-gray-600">Crispy bread with a delightful tomato and basil topping.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 2 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image2.png" alt="Spaghetti Carbonara" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Spaghetti Carbonara</h4>
+                        <p class="text-gray-600">A classic Italian pasta dish with creamy sauce and pancetta.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 3 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image3.png" alt="Tiramisu" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Tiramisu</h4>
+                        <p class="text-gray-600">Rich layers of espresso-soaked ladyfingers and mascarpone cream.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 4 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image4.png" alt="Caesar Salad" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Caesar Salad</h4>
+                        <p class="text-gray-600">Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 5 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image5.png" alt="Grilled Ribeye Steak" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Grilled Ribeye Steak</h4>
+                        <p class="text-gray-600">Juicy ribeye steak grilled to perfection with herbs and spices.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 6 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image6.png" alt="Gelato" class="w-full h-64 object-bottom">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Gelato</h4>
+                        <p class="text-gray-600">Traditional Italian ice cream with a variety of flavors to choose from.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 7 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image7.png" alt="Seafood Platter" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Seafood Platter</h4>
+                        <p class="text-gray-600">A selection of the freshest seafood served with dipping sauces.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 8 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image8.png" alt="Grilled Chicken" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Grilled Chicken</h4>
+                        <p class="text-gray-600">Succulent grilled chicken served with roasted vegetables.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+                <!-- Dish 9 -->
+                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="image9.png" alt="Cheesecake" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-2xl font-bold mb-2">Cheesecake</h4>
+                        <p class="text-gray-600">Creamy cheesecake with a graham cracker crust and fresh berries.</p>
+                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="bg-gradient-to-r from-black to-slate-900 py-12">
+        <div class="container mx-auto text-center">
+            <h3 class="text-4xl font-bold text-red-600 mb-6">About Us</h3>
+            <p class="text-2xl font-mono text-gray-100 max-w-2xl mx-auto">Our restaurant is known for its exceptional service and delicious, mouth-watering meals. We bring together the best of culinary tradition and modern dining experiences. Come and enjoy a memorable meal with us!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gradient-to-r from-black to-slate-900 py-12">
+        <div class="container mx-auto text-center">
+            <h3 class="text-4xl font-bold  text-red-600 mb-6">Contact Us</h3>
+            <p class="text-2xl font-mono text-gray-100 mb-6">Feel free to reach out for reservations or any inquiries.</p>
+            <a href="tel:+1234567890" class="block text-2xl font-mono font-bold text-amber-300 hover:text-red-700 mb-2">+1 234 567 890</a>
+            <a href="mailto:theyellowchilli@gmail.com" class="text-2xl font-mono font-bold text-amber-300 hover:text-red-700">theyellowchilli@gmail.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto text-lg text-center font-bold font-mono text-white">
+            <p>&copy; 2024 The Yellow Chilli. All rights reserved.</p>
+            <p>I'm hosted with GitHub Pages.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
