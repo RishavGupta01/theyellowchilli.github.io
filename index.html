@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Yellow Chilli</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body class="font-mono bg-gray-100">
 
+    <!-- Header -->
     <header class="bg-white shadow">
         <div class="container mx-auto flex justify-between items-center py-4">
-            
             <h1 class="text-3xl font-bold inline-flex items-center space-x-2">
                 <img src="image.png" alt="Restaurant Logo" class="w-12 h-12">
-
                 <span class="text-red-600">The</span>
                 <span class="text-amber-300">Yellow</span>
                 <span class="text-red-600">Chilli</span>
@@ -29,6 +30,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="relative bg-cover bg-center h-screen font-mono" style="background-image: url('restaurant.webp');">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="text-center text-white">
@@ -39,131 +41,330 @@
         </div>
     </section>
 
-    <section id="menu" class=" font-mono py-12 bg-gradient-to-r from-black to-slate-900">
+    <!-- Menu Section -->
+    <section id="menu" class="font-mono py-12 bg-gradient-to-r from-black to-slate-900">
         <div class="container mx-auto text-center">
-            <h3 class="text-5xl font-bold  text-amber-300 mb-8">Our Menu</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    
-                <!-- Dish 1 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image1.png" alt="Bruschetta" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Bruschetta</h4>
-                        <p class="text-gray-600">Crispy bread with a delightful tomato and basil topping.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 2 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image2.png" alt="Spaghetti Carbonara" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Spaghetti Carbonara</h4>
-                        <p class="text-gray-600">A classic Italian pasta dish with creamy sauce and pancetta.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 3 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image3.png" alt="Tiramisu" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Tiramisu</h4>
-                        <p class="text-gray-600">Rich layers of espresso-soaked ladyfingers and mascarpone cream.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 4 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image4.png" alt="Caesar Salad" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Caesar Salad</h4>
-                        <p class="text-gray-600">Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 5 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image5.png" alt="Grilled Ribeye Steak" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Grilled Ribeye Steak</h4>
-                        <p class="text-gray-600">Juicy ribeye steak grilled to perfection with herbs and spices.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 6 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image6.png" alt="Gelato" class="w-full h-64 object-bottom">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Gelato</h4>
-                        <p class="text-gray-600">Traditional Italian ice cream with a variety of flavors to choose from.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 7 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image7.png" alt="Seafood Platter" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Seafood Platter</h4>
-                        <p class="text-gray-600">A selection of the freshest seafood served with dipping sauces.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 8 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image8.png" alt="Grilled Chicken" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Grilled Chicken</h4>
-                        <p class="text-gray-600">Succulent grilled chicken served with roasted vegetables.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
-                <!-- Dish 9 -->
-                <div class="bg-slate-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                    <img src="image9.png" alt="Cheesecake" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h4 class="text-2xl font-bold mb-2">Cheesecake</h4>
-                        <p class="text-gray-600">Creamy cheesecake with a graham cracker crust and fresh berries.</p>
-                        <a href="#" class="mt-4 inline-block bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition duration-300">Order Now</a>
-                    </div>
-                </div>
-    
+            <h3 class="text-5xl font-bold text-amber-300 mb-8">Our Menu</h3>
+            <div id="dish-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Existing dishes will be added here -->
+            </div>
+            <div class="text-center mt-8">
+                <button onclick="toggleAddDishForm()" class="bg-green-600 text-white py-2 px-4 rounded-full hover:bg-green-700 transition">Add New Dish</button>
             </div>
         </div>
     </section>
+
+    <!-- Add Dish Modal Form -->
+    <div id="addDishForm" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg max-w-md w-full">
+            <h3 class="text-2xl font-bold mb-4">Add a New Dish</h3>
+            <form id="dishForm">
+                <div class="mb-4">
+                    <label for="dishName" class="block text-gray-700">Dish Name</label>
+                    <input type="text" id="dishName" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="dishDescription" class="block text-gray-700">Description</label>
+                    <input type="text" id="dishDescription" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="dishPrice" class="block text-gray-700">Price</label>
+                    <input type="number" id="dishPrice" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="dishImageUrl" class="block text-gray-700">Image URL</label>
+                    <input type="url" id="dishImageUrl" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="dishType" class="block text-gray-700">Dish Type</label>
+                    <select id="dishType" class="w-full border border-gray-300 rounded-lg p-2" required>
+                        <option value="Veg">Veg</option>
+                        <option value="Non-Veg">Non-Veg</option>
+                    </select>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="addDish()" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">Add Dish</button>
+                    <button type="button" onclick="toggleAddDishForm()" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Dish Modal Form -->
+    <div id="editDishForm" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg max-w-md w-full">
+            <h3 class="text-2xl font-bold mb-4">Edit Dish</h3>
+            <form id="editForm">
+                <div class="mb-4">
+                    <label for="editDishName" class="block text-gray-700">Dish Name</label>
+                    <input type="text" id="editDishName" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="editDishDescription" class="block text-gray-700">Description</label>
+                    <input type="text" id="editDishDescription" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="editDishPrice" class="block text-gray-700">Price</label>
+                    <input type="number" id="editDishPrice" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="editDishImageUrl" class="block text-gray-700">Image URL</label>
+                    <input type="url" id="editDishImageUrl" class="w-full border border-gray-300 rounded-lg p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="editDishType" class="block text-gray-700">Dish Type</label>
+                    <select id="editDishType" class="w-full border border-gray-300 rounded-lg p-2" required>
+                        <option value="Veg">Veg</option>
+                        <option value="Non-Veg">Non-Veg</option>
+                    </select>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="updateDish()" class="bg-red-600 h- text-white py-2 px-4 rounded-lg hover:bg-red-700">Update Dish</button>
+                    <button type="button" onclick="toggleEditDishForm()" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Billing Section -->
+<section id="billing" class="py-12 bg-amber-100">
+    <div class="container mx-auto">
+        <h3 class="text-3xl font-bold text-red-600 mb-8 text-center">Place Your Order</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h4 class="text-2xl font-bold text-center">Your Order</h4>
+                <ul id="orderList" class="list-disc font-extrabold pl-6 space-y-2">
+                    <!-- Ordered dishes will be listed here -->
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold text-center">Total Price</h4>
+                <p id="totalPrice" class="text-4xl text-red-600 text-center">$0.00</p>
+                <h4 class="text-2xl font-bold text-center">Tax (9%)</h4>
+                <p id="taxAmount" class="text-4xl text-red-600 text-center">$0.00</p>
+                <h4 class="text-2xl font-bold text-center">Total Amount</h4>
+                <p id="totalAmount" class="text-4xl text-red-600 text-center">$0.00</p>
+                <div class="text-center mt-4">
+                    <button onclick="generatePDF()" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700">Download Bill as PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gradient-to-r from-black to-slate-900 py-12">
+    <div class="container mx-auto text-center">
+        <h3 class="text-4xl font-bold  text-red-600 mb-6">Contact Us</h3>
+        <p class="text-2xl font-mono text-gray-100 mb-6">Feel free to reach out for reservations or any inquiries.</p>
+        <a href="tel:+1234567890" class="block text-2xl font-mono font-bold text-amber-300 hover:text-red-700 mb-2">+1 234 567 890</a>
+        <a href="mailto:theyellowchilli@gmail.com" class="text-2xl font-mono font-bold text-amber-300 hover:text-red-700">theyellowchilli@gmail.com</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black py-6">
+    <div class="container mx-auto text-lg text-center font-bold font-mono text-white">
+        <p>&copy; 2024 The Yellow Chilli. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script>
+        const dishes = [
+            { name: 'Bruschetta', description: 'Grilled bread with toppings', price: 10, type: 'Veg', imageUrl: 'https://www.cookingclassy.com/wp-content/uploads/2019/07/bruschetta-2.jpg' },
+            { name: 'Spaghetti Carbonara', description: 'Pasta with eggs, cheese, pancetta, and pepper', price: 15, type: 'Non-Veg', imageUrl: 'https://bellyfull.net/wp-content/uploads/2023/02/Spaghetti-Carbonara-blog-1.jpg' },
+            { name: 'Tiramisu', description: 'Coffee-flavored dessert', price: 8, type: 'Veg', imageUrl: 'https://preppykitchen.com/wp-content/uploads/2018/06/Tiramisu-recipe.jpg' },
+            { name: 'Caesar Salad', description: 'Romaine lettuce and croutons with Caesar dressing', price: 9, type: 'Veg', imageUrl: 'https://www.twopeasandtheirpod.com/wp-content/uploads/2023/04/Caesar-Salad-24-1071x1536.jpg' },
+        ];
+
+        let order = [];
+
+        function displayDishes() {
+            const dishGrid = document.getElementById('dish-grid');
+            dishGrid.innerHTML = '';
+            dishes.forEach((dish, index) => {
+                const dishCard = document.createElement('div');
+                dishCard.className = "bg-white p-4 rounded-lg shadow-lg text-center";
+                dishCard.innerHTML = `
+                    <img src="${dish.imageUrl}" alt="${dish.name}" class="w-full h-64 object-cover rounded-lg mb-2">
+                    <h5 class="font-bold text-xl">${dish.name}</h5>
+                    <p class="text-gray-600">${dish.description}</p>
+                    <p class="text-red-500 font-bold">$${dish.price}</p>
+                    <button class="bg-blue-500 text-white py-1 px-4 rounded mt-2 hover:bg-blue-700" onclick="addToOrder(${index})">Add to Order</button>
+                    <button class="bg-yellow-500 text-white py-1 px-4 rounded mt-2 hover:bg-yellow-700" onclick="toggleEditDishForm(${index})">Edit</button>
+                    <button class="bg-red-500 text-white py-1 px-4 rounded mt-2 hover:bg-red-700" onclick="deleteDish(${index})">Delete</button>
+                `;
+                dishGrid.appendChild(dishCard);
+            });
+        }
+
+        function toggleAddDishForm() {
+            const form = document.getElementById('addDishForm');
+            form.classList.toggle('hidden');
+            form.reset();
+        }
+
+        function toggleEditDishForm(index) {
+            const form = document.getElementById('editDishForm');
+            form.classList.toggle('hidden');
+            if (!form.classList.contains('hidden')) {
+                document.getElementById('editDishName').value = dishes[index].name;
+                document.getElementById('editDishDescription').value = dishes[index].description;
+                document.getElementById('editDishPrice').value = dishes[index].price;
+                document.getElementById('editDishImageUrl').value = dishes[index].imageUrl;
+                document.getElementById('editDishType').value = dishes[index].type;
+            }
+        }
+
+        function addDish() {
+            const name = document.getElementById('dishName').value;
+            const description = document.getElementById('dishDescription').value;
+            const price = parseFloat(document.getElementById('dishPrice').value);
+            const imageUrl = document.getElementById('dishImageUrl').value;
+            const type = document.getElementById('dishType').value;
+
+            if (name && description && price && imageUrl) {
+                dishes.push({ name, description, price, type, imageUrl });
+                displayDishes();
+                toggleAddDishForm();
+            }
+        }
+
+        function updateDish(index) {
+            const name = document.getElementById('editDishName').value;
+            const description = document.getElementById('editDishDescription').value;
+            const price = parseFloat(document.getElementById('editDishPrice').value);
+            const imageUrl = document.getElementById('editDishImageUrl').value;
+            const type = document.getElementById('editDishType').value;
+
+            if (name && description && price && imageUrl) {
+                dishes[index] = { name, description, price, type, imageUrl };
+                displayDishes();
+                toggleEditDishForm();
+            }
+        }
+
+        function deleteDish(index) {
+            dishes.splice(index, 1);
+            displayDishes();
+        }
+
+        
+
+function addToOrder(index) {
+    const dish = dishes[index];
+    const existingDish = order.find(item => item.name === dish.name);
+
+    if (existingDish) {
+        existingDish.quantity += 1; // Increase quantity if the dish is already in the order
+    } else {
+        order.push({ ...dish, quantity: 1 }); // Add new dish with quantity
+    }
     
-    <!-- About Section -->
-    <section id="about" class="bg-gradient-to-r from-black to-slate-900 py-12">
-        <div class="container mx-auto text-center">
-            <h3 class="text-4xl font-bold text-red-600 mb-6">About Us</h3>
-            <p class="text-2xl font-mono text-gray-100 max-w-2xl mx-auto">Our restaurant is known for its exceptional service and delicious, mouth-watering meals. We bring together the best of culinary tradition and modern dining experiences. Come and enjoy a memorable meal with us!</p>
-        </div>
-    </section>
+    updateOrder();
+}
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gradient-to-r from-black to-slate-900 py-12">
-        <div class="container mx-auto text-center">
-            <h3 class="text-4xl font-bold  text-red-600 mb-6">Contact Us</h3>
-            <p class="text-2xl font-mono text-gray-100 mb-6">Feel free to reach out for reservations or any inquiries.</p>
-            <a href="tel:+1234567890" class="block text-2xl font-mono font-bold text-amber-300 hover:text-red-700 mb-2">+1 234 567 890</a>
-            <a href="mailto:theyellowchilli@gmail.com" class="text-2xl font-mono font-bold text-amber-300 hover:text-red-700">theyellowchilli@gmail.com</a>
-        </div>
-    </section>
+function updateOrder() {
+    const orderList = document.getElementById('orderList');
+    orderList.innerHTML = '';
+    let total = 0;
 
-    <!-- Footer -->
-    <footer class="bg-black py-6">
-        <div class="container mx-auto text-lg text-center font-bold font-mono text-white">
-            <p>&copy; 2024 The Yellow Chilli. All rights reserved.</p>
-            <p>I'm hosted with GitHub Pages.</p>
-        </div>
-    </footer>
+    order.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.className = "flex justify-between items-center";
+        listItem.innerHTML = `
+            ${item.name} - $${item.price} x <span class="quantity">${item.quantity}</span>
+            <button onclick="removeFromOrder('${item.name}')" class="bg-red-500 text-white ml-2 px-2 rounded hover:bg-red-700">Remove</button>
+            <button onclick="increaseQuantity('${item.name}')" class="bg-blue-500 text-white ml-2 px-2 rounded hover:bg-blue-700">+</button>
+            <button onclick="decreaseQuantity('${item.name}')" class="bg-yellow-500 text-white ml-2 px-2 rounded hover:bg-yellow-700">-</button>
+        `;
+        orderList.appendChild(listItem);
+        total += item.price * item.quantity; // Calculate total based on quantity
+    });
 
+    const taxRate = 0.09; // 9% tax
+    const taxAmount = total * taxRate; // Calculate tax
+    const totalAmount = total + taxAmount; // Calculate total amount including tax
+
+    // Update the displayed totals
+    document.getElementById('totalPrice').textContent = `$${total.toFixed(2)}`; // Total Price
+    document.getElementById('taxAmount').textContent = `$${taxAmount.toFixed(2)}`; // Tax Amount
+    document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(2)}`; // Total Amount including Tax
+}
+
+
+function removeFromOrder(name) {
+    order = order.filter(item => item.name !== name); // Remove dish from order
+    updateOrder();
+}
+
+function increaseQuantity(name) {
+    const dish = order.find(item => item.name === name);
+    if (dish) {
+        dish.quantity += 1; // Increase quantity
+        updateOrder();
+    }
+}
+
+function decreaseQuantity(name) {
+    const dish = order.find(item => item.name === name);
+    if (dish) {
+        if (dish.quantity > 1) {
+            dish.quantity -= 1; // Decrease quantity
+        } else {
+            removeFromOrder(name); // Remove dish if quantity is 1
+        }
+        updateOrder();
+    }
+}
+
+async function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    // Add title with formatting
+    pdf.setFontSize(22);
+    pdf.setTextColor(255, 204, 0); // Yellow text
+    pdf.text("The Yellow Chilli", 105, 20, { align: "center" });
+
+    // Add a separator line
+    pdf.setLineWidth(0.5);
+    pdf.line(10, 25, 200, 25); // Horizontal line
+
+    // Add order details header
+    pdf.setFontSize(16);
+    pdf.setTextColor(0, 0, 0); // Black text
+    pdf.text("Order Details", 10, 35);
+
+    // Add order details
+    pdf.setFontSize(14);
+    let startY = 45; // Starting Y position for items
+    order.forEach((item, index) => {
+        const line = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+        pdf.text(line, 10, startY + (index * 10));
+    });
+
+    // Calculate totals
+    const totalPrice = order.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const taxAmount = totalPrice * 0.09; // 9% tax
+    const totalAmount = totalPrice + taxAmount;
+
+    // Add totals to PDF
+    const totalStartY = startY + (order.length * 10) + 10; // Position for totals
+    pdf.setFontSize(14);
+    pdf.text(`Total Price: $${totalPrice.toFixed(2)}`, 10, totalStartY);
+    pdf.text(`Tax (9%): $${taxAmount.toFixed(2)}`, 10, totalStartY + 10);
+    pdf.text(`Total Amount: $${totalAmount.toFixed(2)}`, 10, totalStartY + 20);
+
+    // Save the PDF
+    pdf.save('bill.pdf');
+}
+
+
+
+
+        // Initial Display
+        displayDishes();
+    </script>
 </body>
 </html>
-
