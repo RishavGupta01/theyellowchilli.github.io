@@ -91,6 +91,7 @@
     </div>
 
     <!-- Edit Dish Modal Form -->
+      <!-- Edit Dish Modal Form -->
     <div id="editDishForm" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
         <div class="bg-white p-6 rounded-lg max-w-md w-full">
             <h3 class="text-2xl font-bold mb-4">Edit Dish</h3>
@@ -119,12 +120,35 @@
                     </select>
                 </div>
                 <div class="text-right">
-                    <button type="button" onclick="updateDish()" class="bg-red-600 h- text-white py-2 px-4 rounded-lg hover:bg-red-700">Update Dish</button>
+                    <button type="button" onclick="updateDish()" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">Update Dish</button>
                     <button type="button" onclick="toggleEditDishForm()" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
+</div>
+
+<!-- User Details Section -->
+<section id="userDetails" class="py-4 bg-amber-200">
+    <div class="container mx-auto">
+        <h3 class="text-2xl font-bold text-red-600 mb-4">Billing Information</h3>
+        <div class="mb-4">
+            <label for="userName" class="block text-gray-700">Name</label>
+            <input type="text" id="userName" class="w-full border border-gray-300 rounded-lg p-2" required>
+        </div>
+        <div class="mb-4">
+            <label for="userNumber" class="block text-gray-700">Phone Number</label>
+            <input type="tel" id="userNumber" class="w-full border border-gray-300 rounded-lg p-2" 
+                   required pattern="^\+?[1-9]\d{1,14}$" 
+                   title="Please enter a valid phone number (e.g., +1234567890 or 1234567890)">
+        </div>
+        <div class="mb-4">
+            <label for="userAddress" class="block text-gray-700">Address</label>
+            <input type="text" id="userAddress" class="w-full border border-gray-300 rounded-lg p-2" required>
+        </div>
+    </div>
+</section>
+
 
     <!-- Billing Section -->
 <section id="billing" class="py-12 bg-amber-100">
@@ -176,10 +200,11 @@
             { name: 'Tiramisu', description: 'Coffee-flavored dessert', price: 8, type: 'Veg', imageUrl: 'https://preppykitchen.com/wp-content/uploads/2018/06/Tiramisu-recipe.jpg' },
             { name: 'Caesar Salad', description: 'Romaine lettuce and croutons with Caesar dressing', price: 9, type: 'Veg', imageUrl: 'https://www.twopeasandtheirpod.com/wp-content/uploads/2023/04/Caesar-Salad-24-1071x1536.jpg' },
         ];
-
+        let currentEditIndex = -1; // Global variable to track the index of the dish being edited
         let order = [];
 
-        function displayDishes() {
+          // Function to display dishes
+          function displayDishes() {
             const dishGrid = document.getElementById('dish-grid');
             dishGrid.innerHTML = '';
             dishes.forEach((dish, index) => {
@@ -189,14 +214,16 @@
                     <img src="${dish.imageUrl}" alt="${dish.name}" class="w-full h-64 object-cover rounded-lg mb-2">
                     <h5 class="font-bold text-xl">${dish.name}</h5>
                     <p class="text-gray-600">${dish.description}</p>
+                    <p class="text-purple-500">${dish.type}</p>
                     <p class="text-red-500 font-bold">$${dish.price}</p>
                     <button class="bg-blue-500 text-white py-1 px-4 rounded mt-2 hover:bg-blue-700" onclick="addToOrder(${index})">Add to Order</button>
-                    <button class="bg-yellow-500 text-white py-1 px-4 rounded mt-2 hover:bg-yellow-700" onclick="toggleEditDishForm(${index})">Edit</button>
+                    <button class="bg-yellow-500 text-white py-1 px-4 rounded mt-2 hover:bg-yellow-700" onclick="editDish(${index})">Edit</button>
                     <button class="bg-red-500 text-white py-1 px-4 rounded mt-2 hover:bg-red-700" onclick="deleteDish(${index})">Delete</button>
                 `;
                 dishGrid.appendChild(dishCard);
             });
         }
+
 
         function toggleAddDishForm() {
             const form = document.getElementById('addDishForm');
@@ -228,9 +255,31 @@
                 displayDishes();
                 toggleAddDishForm();
             }
+              
         }
 
-        function updateDish(index) {
+           // Function to open the edit dish form and populate it
+        function editDish(index) {
+            const dish = dishes[index];
+
+            document.getElementById('editDishName').value = dish.name;
+            document.getElementById('editDishDescription').value = dish.description;
+            document.getElementById('editDishPrice').value = dish.price;
+            document.getElementById('editDishImageUrl').value = dish.imageUrl;
+            document.getElementById('editDishType').value = dish.type;
+
+            // Save the index in a hidden input or a global variable
+            document.getElementById('editForm').dataset.index = index;
+
+            toggleEditDishForm();
+        }
+
+
+        // Function to update the dish
+        function updateDish() {
+            // Get the index from the form's data attribute
+            const index = document.getElementById('editForm').dataset.index;
+
             const name = document.getElementById('editDishName').value;
             const description = document.getElementById('editDishDescription').value;
             const price = parseFloat(document.getElementById('editDishPrice').value);
@@ -238,8 +287,13 @@
             const type = document.getElementById('editDishType').value;
 
             if (name && description && price && imageUrl) {
+                // Update the dish in the array using the index
                 dishes[index] = { name, description, price, type, imageUrl };
+
+                // Re-render the dishes after updating
                 displayDishes();
+
+                // Hide the edit form
                 toggleEditDishForm();
             }
         }
@@ -318,27 +372,63 @@ function decreaseQuantity(name) {
     }
 }
 
+
+function validateForm() {
+    const userNumber = document.getElementById('userNumber').value;
+
+    // Regular expression to match a valid phone number
+    const phonePattern = /^\+?[1-9]\d{1,14}$/;
+
+    if (!phonePattern.test(userNumber)) {
+        alert("Please enter a valid phone number (e.g., +1234567890 or 1234567890).");
+        return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+}
+
+
 async function generatePDF() {
+    if (!validateForm()) return; // Ensure valid phone number before proceeding
+
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
 
     // Add title with formatting
-    pdf.setFontSize(22);
-    pdf.setTextColor(255, 204, 0); // Yellow text
+    pdf.setFontSize(24);
+    pdf.setTextColor(0, 0, 0); 
     pdf.text("The Yellow Chilli", 105, 20, { align: "center" });
 
     // Add a separator line
     pdf.setLineWidth(0.5);
     pdf.line(10, 25, 200, 25); // Horizontal line
 
-    // Add order details header
+    // User Information
     pdf.setFontSize(16);
     pdf.setTextColor(0, 0, 0); // Black text
-    pdf.text("Order Details", 10, 35);
-
-    // Add order details
+    pdf.text("Billing Information", 10, 35);
     pdf.setFontSize(14);
-    let startY = 45; // Starting Y position for items
+    
+    const userName = document.getElementById('userName').value;
+    const userNumber = document.getElementById('userNumber').value;
+    const userAddress = document.getElementById('userAddress').value;
+
+    // Highlighted User Information
+    pdf.setTextColor(255, 36, 36); // Blue for highlighting
+    pdf.text(`Name: ${userName}`, 10, 50);
+    pdf.text(`Phone Number: ${userNumber}`, 10, 60);
+    pdf.text(`Address: ${userAddress}`, 10, 70);
+    
+    // Separator
+    pdf.line(10, 80, 200, 80); // Horizontal line
+
+    // Add order details header
+    pdf.setTextColor(0, 0, 0); // Reset to black text
+    pdf.text("Order Details", 10, 90);
+    
+    // Add order details with improved alignment
+    pdf.setFontSize(12);
+    let startY = 100; // Starting Y position for items
     order.forEach((item, index) => {
         const line = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
         pdf.text(line, 10, startY + (index * 10));
@@ -349,9 +439,10 @@ async function generatePDF() {
     const taxAmount = totalPrice * 0.09; // 9% tax
     const totalAmount = totalPrice + taxAmount;
 
-    // Add totals to PDF
+    // Add totals to PDF with better spacing
     const totalStartY = startY + (order.length * 10) + 10; // Position for totals
-    pdf.setFontSize(14);
+    pdf.setFontSize(12);
+    pdf.setTextColor(0, 189, 6);
     pdf.text(`Total Price: $${totalPrice.toFixed(2)}`, 10, totalStartY);
     pdf.text(`Tax (9%): $${taxAmount.toFixed(2)}`, 10, totalStartY + 10);
     pdf.text(`Total Amount: $${totalAmount.toFixed(2)}`, 10, totalStartY + 20);
@@ -359,6 +450,8 @@ async function generatePDF() {
     // Save the PDF
     pdf.save('bill.pdf');
 }
+
+
 
 
 
