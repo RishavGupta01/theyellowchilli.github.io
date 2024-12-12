@@ -247,35 +247,136 @@
         }
 
         function addDish() {
-            const name = document.getElementById('dishName').value;
-            const description = document.getElementById('dishDescription').value;
-            const price = parseFloat(document.getElementById('dishPrice').value);
-            const imageUrl = document.getElementById('dishImageUrl').value;
-            const type = document.getElementById('dishType').value;
+    const name = document.getElementById('dishName').value.trim();
+    const description = document.getElementById('dishDescription').value.trim();
+    const price = parseFloat(document.getElementById('dishPrice').value);
+    const imageUrl = document.getElementById('dishImageUrl').value.trim();
+    const type = document.getElementById('dishType').value;
 
-            if (name && description && price && imageUrl) {
-                dishes.push({ name, description, price, type, imageUrl });
-                displayDishes();
-                toggleAddDishForm();
-            }
-              
-        }
+    // Regular expressions for validation
+    const namePattern = /^[A-Za-z ]+$/; // Name should contain only alphabets and spaces
+    const descriptionPattern = /^[A-Za-z0-9 ,.-]+$/; // Description should be alphanumeric and allow commas, periods, and hyphens
+    const urlPattern = /^(https?:\/\/[^\s]+)$/; // Basic URL validation pattern
+    const pricePattern = /^[0-9]+(\.[0-9]{1,2})?$/; // Price should be a number with up to 2 decimal places
 
-           // Function to open the edit dish form and populate it
-        function editDish(index) {
-            const dish = dishes[index];
+    if (!name || !namePattern.test(name)) {
+        alert("Please enter a valid dish name (letters and spaces only).");
+        return;
+    }
 
-            document.getElementById('editDishName').value = dish.name;
-            document.getElementById('editDishDescription').value = dish.description;
-            document.getElementById('editDishPrice').value = dish.price;
-            document.getElementById('editDishImageUrl').value = dish.imageUrl;
-            document.getElementById('editDishType').value = dish.type;
+    if (!description || !descriptionPattern.test(description)) {
+        alert("Please enter a valid dish description (alphanumeric characters, spaces, and common punctuation only).");
+        return;
+    }
 
-            // Save the index in a hidden input or a global variable
-            document.getElementById('editForm').dataset.index = index;
+    if (!pricePattern.test(price)) {
+        alert("Please enter a valid price (positive number with up to two decimal places).");
+        return;
+    }
 
-            toggleEditDishForm();
-        }
+    if (isNaN(price) || price <= 0) {
+        alert("Please enter a valid price (greater than zero).");
+        return;
+    }
+
+    if (!imageUrl || !urlPattern.test(imageUrl)) {
+        alert("Please enter a valid image URL.");
+        return;
+    }
+
+    if (name && description && price && imageUrl) {
+        dishes.push({ name, description, price, type, imageUrl });
+        displayDishes();
+        toggleAddDishForm();
+    }
+}
+
+// Function to open the edit dish form and populate it
+function editDish(index) {
+    const dish = dishes[index];
+
+    document.getElementById('editDishName').value = dish.name;
+    document.getElementById('editDishDescription').value = dish.description;
+    document.getElementById('editDishPrice').value = dish.price;
+    document.getElementById('editDishImageUrl').value = dish.imageUrl;
+    document.getElementById('editDishType').value = dish.type;
+
+    // Save the index in a hidden input or a global variable
+    document.getElementById('editForm').dataset.index = index;
+
+    toggleEditDishForm();
+}
+
+// Validating the input fields in the edit dish form
+function validateEditDishForm() {
+    const name = document.getElementById('editDishName').value.trim();
+    const description = document.getElementById('editDishDescription').value.trim();
+    const price = parseFloat(document.getElementById('editDishPrice').value);
+    const imageUrl = document.getElementById('editDishImageUrl').value.trim();
+
+    // Regular expressions for validation
+    const namePattern = /^[A-Za-z ]+$/; // Name should contain only alphabets and spaces
+    const descriptionPattern = /^[A-Za-z0-9 ,.-]+$/; // Description should be alphanumeric and allow commas, periods, and hyphens
+    const urlPattern = /^(https?:\/\/[^\s]+)$/; // Basic URL validation pattern
+    const pricePattern = /^[0-9]+(\.[0-9]{1,2})?$/; // Price should be a number with up to 2 decimal places
+
+    if (!name || !namePattern.test(name)) {
+        alert("Please enter a valid dish name (letters and spaces only).");
+        return false;
+    }
+
+    if (!description || !descriptionPattern.test(description)) {
+        alert("Please enter a valid dish description (alphanumeric characters, spaces, and common punctuation only).");
+        return false;
+    }
+
+    if (!pricePattern.test(price)) {
+        alert("Please enter a valid price (positive number with up to two decimal places).");
+        return false;
+    }
+
+    if (isNaN(price) || price <= 0) {
+        alert("Please enter a valid price (greater than zero).");
+        return false;
+    }
+
+    if (!imageUrl || !urlPattern.test(imageUrl)) {
+        alert("Please enter a valid image URL.");
+        return false;
+    }
+
+    return true; // Allow form submission if everything is valid
+}
+
+
+// Validating the input fields in the edit dish form
+function validateEditDishForm() {
+    const name = document.getElementById('editDishName').value.trim();
+    const description = document.getElementById('editDishDescription').value.trim();
+    const imageUrl = document.getElementById('editDishImageUrl').value.trim();
+
+    // Regular expressions for validation
+    const namePattern = /^[A-Za-z ]+$/; // Name should contain only alphabets and spaces
+    const descriptionPattern = /^[A-Za-z0-9 ,.-]+$/; // Description should be alphanumeric and allow commas, periods, and hyphens
+    const urlPattern = /^(https?:\/\/[^\s]+)$/; // Basic URL validation pattern
+
+    if (!name || !namePattern.test(name)) {
+        alert("Please enter a valid dish name (letters and spaces only).");
+        return false;
+    }
+
+    if (!description || !descriptionPattern.test(description)) {
+        alert("Please enter a valid dish description (alphanumeric characters, spaces, and common punctuation only).");
+        return false;
+    }
+
+    if (!imageUrl || !urlPattern.test(imageUrl)) {
+        alert("Please enter a valid image URL.");
+        return false;
+    }
+
+    return true; // Allow form submission if everything is valid
+}
 
 
         // Function to update the dish
@@ -306,8 +407,39 @@
             displayDishes();
         }
 
-        
 
+function validateForm() {
+    const userName = document.getElementById('userName').value.trim();
+    const userNumber = document.getElementById('userNumber').value.trim();
+    const userAddress = document.getElementById('userAddress').value.trim();
+    
+    // Regular expressions
+    const namePattern = /^[A-Za-z ]+$/; // Name should contain only alphabets and spaces
+    const phonePattern = /^\d{10}$/; // Phone number should be exactly 10 digits
+    const addressPattern = /^[A-Za-z0-9 ,.-]+$/; // Address should contain letters, numbers, spaces, commas, periods, and hyphens
+
+    // Name validation
+    if (!userName || !namePattern.test(userName)) {
+        alert("Please enter a valid name (letters only). Numbers and special characters are not allowed.");
+        return false;
+    }
+
+    // Phone number validation
+    if (!phonePattern.test(userNumber)) {
+        alert("Please enter a valid phone number (e.g., 1234567890).");
+        return false; // Prevent form submission
+    }
+
+    // Address validation
+    if (!userAddress || !addressPattern.test(userAddress)) {
+        alert("Please enter a valid address.");
+        return false;
+    }
+
+    return true; // Allow form submission
+}
+
+// Function to add a dish to the order
 function addToOrder(index) {
     const dish = dishes[index];
     const existingDish = order.find(item => item.name === dish.name);
@@ -315,12 +447,12 @@ function addToOrder(index) {
     if (existingDish) {
         existingDish.quantity += 1; // Increase quantity if the dish is already in the order
     } else {
-        order.push({ ...dish, quantity: 1 }); // Add new dish with quantity
+        order.push({ ...dish, quantity: 1 }); // Add new dish with quantity of at least 1
     }
-    
     updateOrder();
 }
 
+// Function to update the order
 function updateOrder() {
     const orderList = document.getElementById('orderList');
     orderList.innerHTML = '';
@@ -349,12 +481,13 @@ function updateOrder() {
     document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(2)}`; // Total Amount including Tax
 }
 
-
+// Function to remove a dish from the order
 function removeFromOrder(name) {
     order = order.filter(item => item.name !== name); // Remove dish from order
     updateOrder();
 }
 
+// Function to increase the quantity of a dish
 function increaseQuantity(name) {
     const dish = order.find(item => item.name === name);
     if (dish) {
@@ -363,6 +496,7 @@ function increaseQuantity(name) {
     }
 }
 
+// Function to decrease the quantity of a dish
 function decreaseQuantity(name) {
     const dish = order.find(item => item.name === name);
     if (dish) {
@@ -376,19 +510,8 @@ function decreaseQuantity(name) {
 }
 
 
-function validateForm() {
-    const userNumber = document.getElementById('userNumber').value;
 
-    // Regular expression to match a valid phone number
-    const phonePattern = /^\+?[1-9]\d{1,14}$/;
-
-    if (!phonePattern.test(userNumber)) {
-        alert("Please enter a valid phone number (e.g., +1234567890 or 1234567890).");
-        return false; // Prevent form submission
-    }
-
-    return true; // Allow form submission
-}
+// Function to validate form inputs
 
 
 async function generatePDF() {
